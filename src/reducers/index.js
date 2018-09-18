@@ -15,7 +15,7 @@ const listByMonth = combineReducers({
     9: createList(9),
     10: createList(10),
     11: createList(11),
-    "12": createList(12)
+    12: createList(12)
 })
 
 const calendarEvents = combineReducers({
