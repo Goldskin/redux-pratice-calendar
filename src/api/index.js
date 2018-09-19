@@ -25,6 +25,6 @@ export const fetchCalendarEvents = (month) => {
             throw new Error('KABOOM')
         }
 
-        return fakeDatabase.calendarEvents
+        return fakeDatabase.calendarEvents.filter(calendarEvent => calendarEvent.month === parseInt(month, 10))
     })
 }

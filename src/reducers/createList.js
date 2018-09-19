@@ -3,12 +3,9 @@ import { FETCH_CALENDAR_EVENTS } from "../const";
 
 const createList = month => {
     const ids = (state = [], action) => {
-        if (action.month === month) {
-            console.log('ids', action)
-        }
         switch (action.type) {
             case FETCH_CALENDAR_EVENTS.SUCCESS:
-                return parseInt(action.month, 10) === month ?
+                return action.month === month ?
                     action.response.result :
                     state
             default:
@@ -19,6 +16,7 @@ const createList = month => {
         if (action.month !== month) {
             return state
         }
+
         switch (action.type) {
             case FETCH_CALENDAR_EVENTS.REQUEST:
                 return true

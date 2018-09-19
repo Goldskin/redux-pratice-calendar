@@ -30,7 +30,7 @@ class CurrentCalendar extends Component {
 }
 
 const mapStateToProps = (state, { match }) => {
-    const month = match.params.month || "1"
+    const month = parseInt(match.params.month || 1, 10)
 
     return {
         calendarEvents: getVisibleMonth(state, month),

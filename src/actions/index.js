@@ -6,7 +6,8 @@ import * as schema from './schema'
 
 export const fetchCalendarEvents = month => dispatch => {
     dispatch({
-        type: FETCH_CALENDAR_EVENTS.REQUEST
+        type: FETCH_CALENDAR_EVENTS.REQUEST,
+        month
     })
 
     return api.fetchCalendarEvents(month).then(
