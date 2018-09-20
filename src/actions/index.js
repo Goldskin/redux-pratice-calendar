@@ -1,5 +1,5 @@
 import * as api from '../api'
-import { FETCH_CALENDAR_EVENTS } from '../const';
+import { FETCH_CALENDAR_EVENTS } from '../actions-type';
 import { normalize } from "normalizr";
 import * as schema from './schema'
 
