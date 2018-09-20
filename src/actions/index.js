@@ -4,24 +4,25 @@ import { normalize } from "normalizr";
 import * as schema from './schema'
 
 
-export const fetchCalendarEvents = month => dispatch => {
+export const fetchCalendarEvents = (date) => dispatch => {
     dispatch({
         type: FETCH_CALENDAR_EVENTS.REQUEST,
-        month
+        date
     })
 
-    return api.fetchCalendarEvents(month).then(
+    return api.fetchCalendarEvents(date).then(
         response => {
+            console.log(response)
             dispatch({
                 type: FETCH_CALENDAR_EVENTS.SUCCESS,
-                month,
+                date,
                 response: normalize(response, schema.arrayOfCalendarEvents)
             })
         },
         error => {
             dispatch({
                 type: FETCH_CALENDAR_EVENTS.FAILURE,
-                month,
+                date,
                 message: error.message || 'Something went wrong'
             })
         }

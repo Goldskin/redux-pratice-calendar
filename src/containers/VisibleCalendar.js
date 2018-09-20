@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Calendar from '../components/Calendar';
 import { connect } from 'react-redux'
-import { getVisibleMonth, getErrorMessage, getIsFetching } from '../reducers'
+import { getVisibleDate, getErrorMessage, getIsFetching } from '../reducers'
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
+import moment from 'moment'
+
 
 class CurrentCalendar extends Component {
     componentDidMount () {
@@ -11,14 +13,14 @@ class CurrentCalendar extends Component {
     }
 
     componentDidUpdate (prevProps) {
-        if (this.props.month !== prevProps.month) {
+        if (this.props.date !== prevProps.date) {
             this.fetchData()
         }
     }
 
     fetchData () {
-        const { month, fetchCalendarEvents } = this.props
-        fetchCalendarEvents(month)
+        const { date, fetchCalendarEvents } = this.props
+        fetchCalendarEvents(date)
     }
 
     render () {
@@ -30,13 +32,23 @@ class CurrentCalendar extends Component {
 }
 
 const mapStateToProps = (state, { match }) => {
-    const month = parseInt(match.params.month || 1, 10)
+    // months starts at 0 like arrays
+    const current = moment()
+    const month = parseInt(match.params.month, 10) - 1 || current.month()
+    const year = parseInt(match.params.year, 10) || current.year()
+    const day = parseInt(match.params.day, 10) || current.day()
+
+    const date = moment({
+        year,
+        month,
+        day
+    }).format('YYYYMMDD')
 
     return {
-        calendarEvents: getVisibleMonth(state, month),
-        errorMessage: getErrorMessage(state, month),
-        isFetching: getIsFetching(state, month),
-        month
+        calendarEvents: getVisibleDate(state, date),
+        errorMessage: getErrorMessage(state, date),
+        isFetching: getIsFetching(state, date),
+        date
     }
 }
 

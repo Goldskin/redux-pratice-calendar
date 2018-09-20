@@ -8,7 +8,7 @@ const Root = ({ store }) => {
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route path="/:month?" component={App} />
+                    <Route path="/:year?/:month?/:day?" component={App} />
                 </Switch>
             </Router>
         </Provider>
