@@ -10,9 +10,7 @@ const reducers = combineReducers({
     publicHolidays
 })
 
-
 export default reducers
-
 
 export const getVisibleDate = (state, date) => {
     const ids = fromList.getIds(state.calendarEvents)

@@ -1,6 +1,6 @@
 import createList from './createList';
 import { FETCH_PUBLIC_HOLIDAYS } from "../actions-type";
 
-const calendarEvents = createList(FETCH_PUBLIC_HOLIDAYS)
+const publicHolidays = createList(FETCH_PUBLIC_HOLIDAYS, 'publicHolidays')
 
-export default calendarEvents
+export default publicHolidays

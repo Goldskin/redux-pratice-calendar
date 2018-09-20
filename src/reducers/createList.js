@@ -1,6 +1,5 @@
-import byId from './byId';
 import { combineReducers } from "redux";
-export default (actions) => {
+export default (actions, type) => {
     const ids = (state = [], action) => {
         switch (action.type) {
             case actions.SUCCESS:
@@ -30,6 +29,16 @@ export default (actions) => {
             default:
                 return state
         }
+    }
+
+    const byId = (state = {}, action) => {
+        if (action.response) {
+            return {
+                ...state,
+                ...action.response.entities[type]
+            }
+        }
+        return state
     }
 
     return combineReducers({
