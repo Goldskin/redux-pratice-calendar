@@ -2,21 +2,14 @@
 import { combineReducers } from 'redux';
 import byId, * as fromByid  from './byId'
 import createList, * as fromList from './createList';
+import moment from 'moment'
 
-const listByMonth = combineReducers({
-    "1": createList(1),
-    2: createList(2),
-    3: createList(3),
-    4: createList(4),
-    5: createList(5),
-    6: createList(6),
-    7: createList(7),
-    8: createList(8),
-    9: createList(9),
-    10: createList(10),
-    11: createList(11),
-    12: createList(12)
-})
+const months = {}
+for (let month = 1; month <= moment.months().length; month++) {
+    months[month] = createList(month)
+}
+
+const listByMonth = combineReducers(months)
 
 const calendarEvents = combineReducers({
     byId,
