@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Calendar from '../components/Calendar';
 import { connect } from 'react-redux'
-import { getVisibleDate, getErrorMessage, getIsFetching } from '../reducers'
+import * as fromReducers from '../reducers'
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
@@ -47,9 +47,10 @@ const mapStateToProps = (state, { match }) => {
     }).format('YYYYMMDD')
 
     return {
-        calendarEvents: getVisibleDate(state, date),
-        errorMessage: getErrorMessage(state, date),
-        isFetching: getIsFetching(state, date),
+        calendarEvents: fromReducers.getVisibleCalendarEvents(state, date),
+        publicHolidays: fromReducers.getVisiblePublicHolidays(state, date),
+        errorMessage: fromReducers.getErrorMessage(state, date),
+        isFetching: fromReducers.getIsFetching(state, date),
         date
     }
 }

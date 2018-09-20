@@ -1,9 +1,8 @@
 
 import { combineReducers } from 'redux';
-import * as fromByid  from './byId'
 import  * as fromList from './createList';
-import calendarEvents from './calendarEvents'
-import publicHolidays from './publicHolidays'
+import calendarEvents, * as fromCalendarEvents from './calendarEvents'
+import publicHolidays, * as fromPublicHolidays from './publicHolidays'
 
 const reducers = combineReducers({
     calendarEvents,
@@ -12,10 +11,8 @@ const reducers = combineReducers({
 
 export default reducers
 
-export const getVisibleDate = (state, date) => {
-    const ids = fromList.getIds(state.calendarEvents)
-    return ids.map(id => fromByid.getCalendarEvent(state.calendarEvents.byId, id))
-}
+export const getVisibleCalendarEvents = fromCalendarEvents.getVisibleDate
+export const getVisiblePublicHolidays = fromPublicHolidays.getVisibleDate
 
 export const getIsFetching = (state, date) =>
     fromList.getIsFetching(state)
