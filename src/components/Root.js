@@ -1,14 +1,17 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import App from './App'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Day from './DayApp'
+import Month from './MonthApp'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const Root = ({ store }) => {
     return (
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route path="/:year?/:month?/:day?" component={App} />
+                    <Route path="/month/:year?/:month?" component={Month} />
+                    <Route path="/day/:year?/:month?/:day?" component={Day} />
+                    <Route path="/" render={() => <Redirect from="/" to="day" />} />
                 </Switch>
             </Router>
         </Provider>

@@ -19,16 +19,16 @@ class CurrentCalendar extends Component {
     }
 
     fetchData () {
-        const { date, fetchCalendarEvents, fetchPublicHolidays } = this.props
-        fetchCalendarEvents(date)
-        fetchPublicHolidays(date)
+        const { date, fetchCalendarEventsByDay, fetchPublicHolidaysByDay } = this.props
+        fetchCalendarEventsByDay(date)
+        fetchPublicHolidaysByDay(date)
         fetch(date)
     }
 
     render () {
-        const {calendarEvents} = this.props
+        const { calendarEvents, publicHolidays } = this.props
         return (
-            <Calendar calendarEvents={calendarEvents}/>
+            <Calendar calendarEvents={calendarEvents} publicHolidays={publicHolidays} />
         )
     }
 }

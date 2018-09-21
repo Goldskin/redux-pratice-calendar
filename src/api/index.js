@@ -1,8 +1,17 @@
 
 import delay from "./delay";
-import getCalendarEvents from './calendarEvents'
-import getPublicHolidays from './publicHolidays'
+import * as fromCalendarEvents from './calendarEvents'
+import * as fromPublicHolidays from './publicHolidays'
 
 
-export const fetchCalendarEvents = (date) => delay(1500).then(() => date).then(getCalendarEvents)
-export const fetchPublicHolidays = (date) => delay(1500).then(() => date).then(getPublicHolidays)
+export const fetchCalendarEventsByDay = (date) =>
+    delay(1500).then(() => date).then(fromCalendarEvents.fetchDay)
+
+export const fetchPublicHolidaysByDay = (date) =>
+    delay(1500).then(() => date).then(fromPublicHolidays.fetchDay)
+
+export const fetchCalendarEventsByMonth = (date) =>
+    delay(1500).then(() => date).then(fromCalendarEvents.fetchMonth)
+
+export const fetchPublicHolidaysByMonth = (date) =>
+    delay(1500).then(() => date).then(fromPublicHolidays.fetchMonth)

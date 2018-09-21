@@ -1,10 +1,10 @@
 import React from 'react'
-import VisibleCalendar from '../containers/VisibleCalendar';
+import VisibleMonth from '../containers/VisibleMonth';
 
 
 const App = () => {
     return (
-        <VisibleCalendar/>
+        <VisibleMonth />
     )
 }
 

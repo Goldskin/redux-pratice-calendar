@@ -9,13 +9,21 @@ class Calendar extends Component {
                 <CalendarEvent key={calendarEvent.id} {...calendarEvent} />
             )
         })
+    }
 
+    allPublicHolidays () {
+        return this.props.publicHolidays.map((publicHoliday) => {
+            return (
+                <CalendarEvent key={publicHoliday.id} {...publicHoliday} />
+            )
+        })
     }
 
     render () {
         return (
             <div>
                 {this.allEvents()}
+                {this.allPublicHolidays()}
             </div>
         )
     }
