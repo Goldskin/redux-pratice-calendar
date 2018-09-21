@@ -13,10 +13,5 @@ export default {
         id: v4(),
         text: 'calendarEvent 3',
         date: '2018-12-12'
-    }],
-    publicHolidays: [{
-        id: v4(),
-        text: 'Christmas',
-        date: '2018-12-25'
     }]
 }

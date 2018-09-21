@@ -7,11 +7,12 @@ import * as fromPublicHolidays from './publicHolidays'
 export const fetchCalendarEventsByDay = (date) =>
     delay(1500).then(() => date).then(fromCalendarEvents.fetchDay)
 
-export const fetchPublicHolidaysByDay = (date) =>
-    delay(1500).then(() => date).then(fromPublicHolidays.fetchDay)
 
 export const fetchCalendarEventsByMonth = (date) =>
     delay(1500).then(() => date).then(fromCalendarEvents.fetchMonth)
 
+export const fetchPublicHolidaysByDay = (date) =>
+    fromPublicHolidays.fetchDay(date)
+
 export const fetchPublicHolidaysByMonth = (date) =>
-    delay(1500).then(() => date).then(fromPublicHolidays.fetchMonth)
+    fromPublicHolidays.fetchMonth(date)

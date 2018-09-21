@@ -44,7 +44,7 @@ const mapStateToProps = (state, { match }) => {
         year,
         month,
         day
-    }).format('YYYYMM')
+    }).format('YYYYMMDD')
 
     return {
         calendarEvents: fromReducers.getVisibleCalendarEvents(state, date),
