@@ -35,8 +35,6 @@ export const fetchMonth = date => dispatch => {
 
     return api.fetchCalendarEventsByMonth(date).then(
         response => {
-            console.log(response)
-            
             dispatch({
                 type: FETCH_CALENDAR_EVENTS.SUCCESS,
                 date,
