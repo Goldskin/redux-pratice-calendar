@@ -11,13 +11,16 @@ const reducers = combineReducers({
 
 export default reducers
 
-export const getVisibleCalendarEvents = fromCalendarEvents.getVisibleDate
-export const getVisiblePublicHolidays = fromPublicHolidays.getVisibleDate
+export const getMonthlyCalendarEvents = fromCalendarEvents.getVisibleMonth
+export const getMonthlyPublicHolidays = fromPublicHolidays.getVisibleMonth
 
-export const getIsFetching = (state, date) =>
+export const getDailyCalendarEvents = fromCalendarEvents.getVisibleDay
+export const getDailyPublicHolidays = fromPublicHolidays.getVisibleDay
+
+export const getIsFetching = (state) =>
     fromList.getIsFetching(state)
 
 
-export const getErrorMessage = (state, date) =>{
+export const getErrorMessage = (state) =>
     fromList.getErrorMessage(state)
-}
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Calendar from '../components/Calendar';
+import Calendar from '../components/calendar/Calendar';
 import { connect } from 'react-redux'
 import * as fromReducers from '../reducers'
 import * as actions from '../actions';
@@ -22,7 +22,6 @@ class CurrentCalendar extends Component {
         const { date, fetchCalendarEventsByMonth, fetchPublicHolidaysByMonth } = this.props
         fetchCalendarEventsByMonth(date)
         fetchPublicHolidaysByMonth(date)
-        fetch(date)
     }
 
     render () {
@@ -53,10 +52,10 @@ const mapStateToProps = (state, { match }) => {
     }).format('YYYYMMDD')
 
     return {
-        calendarEvents: fromReducers.getVisibleCalendarEvents(state, date),
-        publicHolidays: fromReducers.getVisiblePublicHolidays(state, date),
-        errorMessage: fromReducers.getErrorMessage(state, date),
-        isFetching: fromReducers.getIsFetching(state, date),
+        calendarEvents: fromReducers.getMonthlyCalendarEvents(state, date),
+        publicHolidays: fromReducers.getMonthlyPublicHolidays(state, date),
+        errorMessage: fromReducers.getErrorMessage(state),
+        isFetching: fromReducers.getIsFetching(state),
         date
     }
 }

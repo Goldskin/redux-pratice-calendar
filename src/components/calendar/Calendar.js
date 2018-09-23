@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import Day from './Day';
-import './month.css'
+import CalendarDay from './CalendarDay';
+import './calendar.css'
 
-
-class Calendar extends Component {
+export default class extends Component {
     getCalendarEvents (date) {
-        return this.props.calendarEvents.filter(calendarEvent =>  calendarEvent.date === date)
+        return this.props.calendarEvents.filter(calendarEvent =>
+            moment(calendarEvent.date).format('YYYYMMDD') === date
+        )
     }
 
     getPublicHolidays (date) {
-        return this.props.publicHolidays.filter(publicHoliday => publicHoliday.date === date)
+        return this.props.publicHolidays.filter(publicHoliday =>
+            moment(publicHoliday.date).format('YYYYMMDD') === date
+        )
     }
 
     renderAllDay () {
@@ -34,7 +37,7 @@ class Calendar extends Component {
         ) {
             days.push(
                 <li key={current.format('YYYYMMDD')}>
-                    <Day
+                    <CalendarDay
                         moment={moment(current)}
                         active={current.format('YYYYMM') === currentMonth.format('YYYYMM')}
                         highlight={current.format('YYYYMMDD') === currentDay.format('YYYYMMDD')}
@@ -50,11 +53,9 @@ class Calendar extends Component {
 
     render () {
         return (
-            <ul className="month list-unstyled">
+            <ul className="calendar list-unstyled">
                 {this.renderAllDay()}
             </ul>
         )
     }
 }
-
-export default Calendar

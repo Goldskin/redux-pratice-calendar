@@ -1,13 +1,20 @@
-import createList from './createList';
-import { FETCH_CALENDAR_EVENTS } from "../actions-type";
+import createList from './createList'
+import { FETCH_CALENDAR_EVENTS } from "../actions-type"
 import * as fromByid from './byId'
-import * as fromList from './createList';
+import * as fromList from './createList'
+import moment from 'moment'
 
-const calendarEvents = createList(FETCH_CALENDAR_EVENTS, 'calendarEvents')
+export default createList(FETCH_CALENDAR_EVENTS, 'calendarEvents')
 
-export default calendarEvents
-
-export const getVisibleDate = (state, date) => {
+export const getVisibleDay = (state, date) => {
+    date = moment(date).format('YYYYMMDD')
     const ids = fromList.getIds(state.calendarEvents)
-    return ids.map(id => fromByid.getById(state.calendarEvents.byId, id))
+    const calendarEvents = ids.map(id => fromByid.getById(state.calendarEvents.byId, id))
+    return calendarEvents.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMMDD') === date)
+}
+export const getVisibleMonth = (state, date) => {
+    date = moment(date).format('YYYYMM')
+    const ids = fromList.getIds(state.calendarEvents)
+    const calendarEvents = ids.map(id => fromByid.getById(state.calendarEvents.byId, id))
+    return calendarEvents.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMM') === date)
 }

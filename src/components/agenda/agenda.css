@@ -1,0 +1,13 @@
+.agenda {
+    background: gainsboro;
+    height: 100px;
+    color: white
+}
+
+.agenda.active {
+    background: grey;
+}
+
+.agenda.highlight {
+    background: red;
+}

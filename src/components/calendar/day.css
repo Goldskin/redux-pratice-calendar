@@ -1,13 +1,13 @@
-.day {
+.calendar .day {
     background: gainsboro;
     height: 100px;
     color: white
 }
 
-.day.active {
+.calendar .day.active {
     background: grey;
 }
 
-.day.highlight {
+.calendar .day.highlight {
     background: red;
 }

@@ -1,8 +1,8 @@
-ul.month {
+ul.calendar {
     list-style: none;
 }
 
-ul.month > li {
+ul.calendar > li {
     display: block;
     flex-grow: 1;
     width: calc(100% * (1/7));

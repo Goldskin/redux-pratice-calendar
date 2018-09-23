@@ -11,7 +11,7 @@ const Root = ({ store }) => {
                 <Switch>
                     <Route path="/month/:year?/:month?" component={Month} />
                     <Route path="/day/:year?/:month?/:day?" component={Day} />
-                    <Route path="/" render={() => <Redirect from="/" to="day" />} />
+                    <Route path="/" render={() => <Redirect from="/" to="month" />} />
                 </Switch>
             </Router>
         </Provider>
