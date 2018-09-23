@@ -11,6 +11,7 @@ export default class extends Component {
     }
 
     getPublicHolidays (date) {
+        date = date.format('YYYYMMDD')
         return this.props.publicHolidays.filter(publicHoliday =>
             moment(publicHoliday.date).format('YYYYMMDD') === date
         )
@@ -43,6 +44,7 @@ export default class extends Component {
     }
 
     render () {
+        console.log(this.props)
         return (
             <div>
                 <ul className="agenda list-unstyled">

@@ -13,5 +13,9 @@ export default {
         id: v4(),
         text: 'calendarEvent 3',
         date: '20181212 210000'
+    }, {
+        id: v4(),
+        text: 'calendarEvent 4',
+        date: '20180923 210000'
     }]
 }

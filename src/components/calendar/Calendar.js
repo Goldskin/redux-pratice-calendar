@@ -5,12 +5,14 @@ import './calendar.css'
 
 export default class extends Component {
     getCalendarEvents (date) {
+        date = date.format('YYYYMMDD')
         return this.props.calendarEvents.filter(calendarEvent =>
             moment(calendarEvent.date).format('YYYYMMDD') === date
         )
     }
 
     getPublicHolidays (date) {
+        date = date.format('YYYYMMDD')
         return this.props.publicHolidays.filter(publicHoliday =>
             moment(publicHoliday.date).format('YYYYMMDD') === date
         )
@@ -41,8 +43,8 @@ export default class extends Component {
                         moment={moment(current)}
                         active={current.format('YYYYMM') === currentMonth.format('YYYYMM')}
                         highlight={current.format('YYYYMMDD') === currentDay.format('YYYYMMDD')}
-                        calendarEvents={this.getCalendarEvents(current.format('YYYYMMDD'))}
-                        publicHolidays={this.getPublicHolidays(current.format('YYYYMMDD'))}
+                        calendarEvents={this.getCalendarEvents(current)}
+                        publicHolidays={this.getPublicHolidays(current)}
                     />
                 </li>
             )

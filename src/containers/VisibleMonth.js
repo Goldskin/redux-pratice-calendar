@@ -43,12 +43,12 @@ const mapStateToProps = (state, { match }) => {
     const current = moment()
     const month = parseInt(match.params.month, 10) - 1 || current.month()
     const year = parseInt(match.params.year, 10) || current.year()
-    const day = parseInt(match.params.day, 10) || current.day()
-
+    const day = parseInt(match.params.day, 10) || current.date()
+    
     const date = moment({
         year,
         month,
-        day
+        date: day
     }).format('YYYYMMDD')
 
     return {
