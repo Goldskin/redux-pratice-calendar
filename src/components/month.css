@@ -1,0 +1,10 @@
+ul.month {
+    list-style: none;
+}
+
+ul.month > li {
+    display: block;
+    flex-grow: 1;
+    width: calc(100% * (1/7));
+    float: left;
+}

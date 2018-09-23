@@ -27,8 +27,14 @@ class CurrentCalendar extends Component {
 
     render () {
         const { calendarEvents, publicHolidays } = this.props
+        const date = moment(this.props.date)
         return (
-            <Calendar calendarEvents={calendarEvents} publicHolidays={publicHolidays} />
+            <Calendar
+                month={date.format('MM') - 1}
+                year={date.format('YYYY')}
+                calendarEvents={calendarEvents}
+                publicHolidays={publicHolidays}
+            />
         )
     }
 }

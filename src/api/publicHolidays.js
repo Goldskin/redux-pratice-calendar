@@ -4,8 +4,12 @@ import { v4 } from 'node-uuid';
 
 const formatData = response => ({
     id: v4(),
-    date: moment().set(response.date).format('YYYYMMDD'),
-    text: response.name.find(name => name.lang === 'en').text
+    date: moment().set({
+        date: response.date.day,
+        month: response.date.month -1,
+        year: response.date.year
+    }).format('YYYYMMDD'),
+    text: response.name.find(name => name.lang === 'fr').text
 })
 
 export const fetchDay = (date) => {

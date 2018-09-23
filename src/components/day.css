@@ -1,0 +1,13 @@
+.day {
+    background: gainsboro;
+    height: 100px;
+    color: white
+}
+
+.day.active {
+    background: grey;
+}
+
+.day.highlight {
+    background: red;
+}
