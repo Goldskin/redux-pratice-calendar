@@ -1,8 +1,14 @@
-ul.calendar {
+.calendar {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: block;
+}
+
+.calendar ul {
     list-style: none;
 }
 
-ul.calendar > li {
+.calendar ul > li {
     display: block;
     flex-grow: 1;
     width: calc(100% * (1/7));

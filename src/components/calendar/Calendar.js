@@ -18,11 +18,15 @@ export default class extends Component {
         )
     }
 
-    renderAllDay () {
+    currentMonth () {
         const { month, year } = this.props
         const resetTime = { hour: 0, minute: 0, second: 0, millisecond: 0 }
+        return moment({ month, year, date: 1, ...resetTime })
+    }
+
+    renderAllDay () {
+        const currentMonth = this.currentMonth()
         const currentDay = moment()
-        const currentMonth = moment({ month, year, date: 1, ...resetTime })
         const firstDay = moment(currentMonth)
         const daysInMonth = firstDay.daysInMonth()
         const lastDay = moment(firstDay).set({ date: daysInMonth })
@@ -55,9 +59,14 @@ export default class extends Component {
 
     render () {
         return (
-            <ul className="calendar list-unstyled">
-                {this.renderAllDay()}
-            </ul>
+            <div className="calendar">
+                <h1>
+                    {this.currentMonth().format('YYYY MMMM')}
+                </h1>
+                <ul className="calendar list-unstyled">
+                    {this.renderAllDay()}
+                </ul>
+            </div>
         )
     }
 }

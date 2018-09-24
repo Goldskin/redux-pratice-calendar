@@ -3,8 +3,7 @@ import './day.css'
 import classNames from 'classnames'
 import CalendarEvent from '../CalendarEvent'
 import PublicHoliday from '../PublicHoliday';
-
-
+import { Link } from 'react-router-dom'
 
 export default (props) => {
     const myClassNames = classNames(
@@ -20,13 +19,19 @@ export default (props) => {
         <PublicHoliday {...publicHoliday} key={publicHoliday.id}/>
     )
 
+    const year = props.moment.format('YYYY')
+    const month = props.moment.format('MM')
+    const day = props.moment.format('DD')
+
     return (
-        <div className={myClassNames}>
-            <span>{props.moment.format('D')}</span>
-            {' '}
-            <span>{props.moment.format('dddd')}</span>
-            {calendarEvents}
-            {publicHolidays}
-        </div>
+        <Link to={`/day/${year}/${month}/${day}/`}>
+            <div className={myClassNames}>
+                <span>{props.moment.format('D')}</span>
+                {' '}
+                <span>{props.moment.format('ddd')}</span>
+                {calendarEvents}
+                {publicHolidays}
+            </div>
+        </Link>
     )
 }
