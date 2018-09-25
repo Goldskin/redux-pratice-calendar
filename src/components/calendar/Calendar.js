@@ -21,8 +21,6 @@ export default class extends Component {
 
     currentMonth () {
         const { month, year } = this.props
-        console.log(month, year)
-        
         const resetTime = { hour: 0, minute: 0, second: 0, millisecond: 0 }
         return moment({ month, year, date: 1, ...resetTime })
     }
