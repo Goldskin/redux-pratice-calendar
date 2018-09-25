@@ -46,8 +46,6 @@ const getDatabase = () => {
     }
 
     return fetchAll().then(response => {
-        console.log('pas full')
-        
         database.publicHolidays = response
 
         return database

@@ -39,12 +39,14 @@ class CurrentCalendar extends Component {
 }
 
 const mapStateToProps = (state, { match }) => {
-    // months starts at 0 like arrays
     const current = moment()
-    const month = parseInt(match.params.month, 10) - 1 || current.month()
+    const monthUrl = parseInt(match.params.month, 10)
+
+    // months starts at 0 like arrays
+    const month = monthUrl ? monthUrl - 1 : current.month()
     const year = parseInt(match.params.year, 10) || current.year()
     const day = parseInt(match.params.day, 10) || current.date()
-    
+
     const date = moment({
         year,
         month,

@@ -10,11 +10,11 @@ export const getVisibleDay = (state, date) => {
     date = moment(date).format('YYYYMMDD')
     const ids = fromList.getIds(state.calendarEvents)
     const calendarEvents = ids.map(id => fromByid.getById(state.calendarEvents.byId, id))
-    return calendarEvents.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMMDD') === date)
+    return calendarEvents//.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMMDD') === date)
 }
 export const getVisibleMonth = (state, date) => {
     date = moment(date).format('YYYYMM')
     const ids = fromList.getIds(state.calendarEvents)
     const calendarEvents = ids.map(id => fromByid.getById(state.calendarEvents.byId, id))
-    return calendarEvents.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMM') === date)
+    return calendarEvents//.filter(calendarEvent => moment(calendarEvent.date).format('YYYYMM') === date)
 }

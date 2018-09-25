@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import CalendarDay from './CalendarDay';
+import Cell from './CalendarCell';
+import { Link } from 'react-router-dom'
 import './calendar.css'
 
 export default class extends Component {
@@ -20,6 +21,8 @@ export default class extends Component {
 
     currentMonth () {
         const { month, year } = this.props
+        console.log(month, year)
+        
         const resetTime = { hour: 0, minute: 0, second: 0, millisecond: 0 }
         return moment({ month, year, date: 1, ...resetTime })
     }
@@ -43,7 +46,7 @@ export default class extends Component {
         ) {
             days.push(
                 <li key={current.format('YYYYMMDD')}>
-                    <CalendarDay
+                    <Cell
                         moment={moment(current)}
                         active={current.format('YYYYMM') === currentMonth.format('YYYYMM')}
                         highlight={current.format('YYYYMMDD') === currentDay.format('YYYYMMDD')}
@@ -58,14 +61,29 @@ export default class extends Component {
     }
 
     render () {
+        const prev = this.currentMonth().subtract({ months: 1 })
+        const next = this.currentMonth().add({ months: 1 })
+
         return (
             <div className="calendar">
-                <h1>
-                    {this.currentMonth().format('YYYY MMMM')}
-                </h1>
-                <ul className="calendar list-unstyled">
-                    {this.renderAllDay()}
-                </ul>
+                <Link
+                    to={`/month/${prev.format('YYYY')}/${prev.format('MM')}`}
+                >
+                    Previous month
+                </Link>
+                <div>
+                    <h1>
+                        {this.currentMonth().format('YYYY MMMM')}
+                    </h1>
+                    <ul className="calendar list-unstyled">
+                        {this.renderAllDay()}
+                    </ul>
+                </div>
+                <Link
+                    to={`/month/${next.format('YYYY')}/${next.format('MM')}`}
+                >
+                    Next month
+                </Link>
             </div>
         )
     }
