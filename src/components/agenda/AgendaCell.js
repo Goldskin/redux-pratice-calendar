@@ -1,5 +1,5 @@
 import React from 'react'
-import './hours.css'
+import './agendaCell.css'
 import classNames from 'classnames'
 import CalendarEvent from '../CalendarEvent'
 

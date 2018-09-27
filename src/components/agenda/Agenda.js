@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import Hours from './AgendaHours';
+import Cell from './AgendaCell';
 import PublicHoliday from '../PublicHoliday';
 
 export default class extends Component {
@@ -38,7 +38,7 @@ export default class extends Component {
     renderAllHours () {
         const currentDay = this.getCurrentMomentDay()
         const nextDay = moment(currentDay).add({ days: 1 })
-        const hours = []
+        const cell = []
         for (
             let current = currentDay;
             current.isBefore(nextDay);
@@ -48,15 +48,15 @@ export default class extends Component {
             const events = this.getCalendarEvents(current)
 
             if (events.length) {
-                hours.push(
+                cell.push(
                     <li key={current.format('HH')}>
-                        <Hours moment={moment(current)} calendarEvents={events}/>
+                        <Cell moment={moment(current)} calendarEvents={events}/>
                     </li>
                 )
             }
         }
 
-        return hours
+        return cell
     }
 
     render () {

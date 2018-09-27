@@ -1,5 +1,5 @@
 import React from 'react'
-import './day.css'
+import './cell.css'
 import classNames from 'classnames'
 import CalendarEvent from '../CalendarEvent'
 import PublicHoliday from '../PublicHoliday';
@@ -22,9 +22,10 @@ export default (props) => {
     const year = props.moment.format('YYYY')
     const month = props.moment.format('MM')
     const day = props.moment.format('DD')
+    const link = `/day/${year}/${month}/${day}/`
 
     return (
-        <Link to={`/day/${year}/${month}/${day}/`}>
+        <Link to={link}>
             <div className={myClassNames}>
                 <span>{props.moment.format('D')}</span>
                 {' '}

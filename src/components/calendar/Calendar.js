@@ -62,26 +62,27 @@ export default class extends Component {
         const prev = this.currentMonth().subtract({ months: 1 })
         const next = this.currentMonth().add({ months: 1 })
 
+        const prevLink = `/month/${prev.format('YYYY')}/${prev.format('MM')}`
+        const nextLink = `/month/${next.format('YYYY')}/${next.format('MM')}`
+
         return (
-            <div className="calendar">
-                <Link
-                    to={`/month/${prev.format('YYYY')}/${prev.format('MM')}`}
-                >
-                    Previous month
-                </Link>
-                <div>
-                    <h1>
-                        {this.currentMonth().format('YYYY MMMM')}
-                    </h1>
-                    <ul className="calendar list-unstyled">
-                        {this.renderAllDay()}
-                    </ul>
+            <div className="calendar container">
+                <div className="row">
+                    <div className="col">
+                        <Link to={prevLink}>Previous month</Link>
+                    </div>
+                    <div className="col-10">
+                        <h1>
+                            {this.currentMonth().format('YYYY MMMM')}
+                        </h1>
+                        <ul className="calendar list-unstyled">
+                            {this.renderAllDay()}
+                        </ul>
+                    </div>
+                    <div className="col">
+                        <Link to={nextLink}>Next month</Link>
+                    </div>
                 </div>
-                <Link
-                    to={`/month/${next.format('YYYY')}/${next.format('MM')}`}
-                >
-                    Next month
-                </Link>
             </div>
         )
     }
