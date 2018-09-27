@@ -56,7 +56,7 @@ export default class extends Component {
             }
         }
 
-        return cell9
+        return cell
     }
 
     render () {
