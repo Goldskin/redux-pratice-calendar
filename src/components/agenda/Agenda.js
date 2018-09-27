@@ -56,7 +56,7 @@ export default class extends Component {
             }
         }
 
-        return cell
+        return cell9
     }
 
     render () {
@@ -66,7 +66,7 @@ export default class extends Component {
                     {this.renderPublicHolidays()}
                 </ul>
                 <ul className="agenda list-unstyled">
-                    {this.renderAllHours( )}
+                    {this.renderAllHours()}
                 </ul>
             </div>
         )
