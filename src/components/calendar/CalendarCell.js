@@ -1,5 +1,5 @@
 import React from 'react'
-import './cell.css'
+import './CalendarCell.css'
 import classNames from 'classnames'
 import CalendarEvent from '../CalendarEvent'
 import PublicHoliday from '../PublicHoliday';

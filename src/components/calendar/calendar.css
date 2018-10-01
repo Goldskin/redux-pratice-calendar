@@ -13,3 +13,13 @@
     width: calc(100% * (1/7));
     float: left;
 }
+
+.calendar-title {
+    background: crimson;
+    color: white;
+    display: block;
+}
+
+.calendar-title h1 {
+    margin: 0;
+}

@@ -24,19 +24,19 @@ const database = {
     calendarEvents: [{
         id: v4(),
         text: 'calendarEvent 1',
-        date: '20181112 200000'
+        date: '20181012 200000'
     }, {
         id: v4(),
         text: 'calendarEvent 2',
-        date: '20181212 200000'
+        date: '20181012 100000'
     }, {
         id: v4(),
         text: 'calendarEvent 3',
-        date: '20181212 210000'
+        date: '20181012 210000'
     }, {
         id: v4(),
         text: 'calendarEvent 4',
-        date: '20180923 210000'
+        date: '20181023 210000'
     }]
 }
 

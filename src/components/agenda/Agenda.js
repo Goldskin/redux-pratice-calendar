@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import Cell from './AgendaCell';
 import PublicHoliday from '../PublicHoliday';
+import { Link } from 'react-router-dom'
 
 export default class extends Component {
     getCalendarEvents (date) {
@@ -60,8 +61,11 @@ export default class extends Component {
     }
 
     render () {
+        const date = this.getCurrentMomentDay()
+        const link = `/month/${date.format('YYYY')}/${date.format('MM')}`
         return (
             <div>
+                <Link to={link}>Come back to {date.format('MMMM YYYY')}</Link>
                 <ul className="agenda-header list-unstyled">
                     {this.renderPublicHolidays()}
                 </ul>

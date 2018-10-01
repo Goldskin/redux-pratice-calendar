@@ -1,10 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-
-export default class extends Component {
-    render () {
-        return (
-            <div>{this.props.text}</div>
-        )
-    }
-}
+export default (props) => (
+    <div>{props.text}</div>
+)

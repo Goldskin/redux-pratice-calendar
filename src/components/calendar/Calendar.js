@@ -68,18 +68,18 @@ export default class extends Component {
         return (
             <div className="calendar container">
                 <div className="row">
-                    <div className="col">
+                    <div className="col-1">
                         <Link to={prevLink}>Previous month</Link>
                     </div>
                     <div className="col-10">
-                        <h1>
-                            {this.currentMonth().format('YYYY MMMM')}
-                        </h1>
+                        <div className="calendar-title">
+                            <h1>{this.currentMonth().format('YYYY MMMM')}</h1>
+                        </div>
                         <ul className="calendar list-unstyled">
                             {this.renderAllDay()}
                         </ul>
                     </div>
-                    <div className="col">
+                    <div className="col-1">
                         <Link to={nextLink}>Next month</Link>
                     </div>
                 </div>

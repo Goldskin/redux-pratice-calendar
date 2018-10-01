@@ -20,7 +20,6 @@ export const getDailyPublicHolidays = fromPublicHolidays.getVisibleDay
 export const getIsFetching = (state) =>
     fromList.getIsFetching(state)
 
-
 export const getErrorMessage = (state) =>
     fromList.getErrorMessage(state)
 

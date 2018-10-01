@@ -7,7 +7,6 @@ import CalendarEvent from '../CalendarEvent'
 export default (props) => {
     const myClassNames = classNames(
         'hours',
-        {active: props.active},
         {highlight: props.highlight}
     )
 
