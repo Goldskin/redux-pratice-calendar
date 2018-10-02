@@ -23,22 +23,28 @@ const fetchAll = () => {
 const database = {
     calendarEvents: [{
         id: v4(),
-        text: 'calendarEvent 1',
-        date: '20181012 200000'
+        title: 'Réunion',
+        text: 'Réunion avec le client',
+        date: '20181012 140000'
     }, {
         id: v4(),
-        text: 'calendarEvent 2',
+        title: 'Eat fish',
+        text: 'Faire le repas pour aujourd\'hui',
         date: '20181012 100000'
     }, {
         id: v4(),
-        text: 'calendarEvent 3',
+        title: 'Danse',
+        text: 'Cours de salsa',
         date: '20181012 210000'
     }, {
         id: v4(),
-        text: 'calendarEvent 4',
+        title: 'Fnac',
+        text: 'Acheter le dernier album de Patrick sebastien',
         date: '20181023 210000'
     }]
 }
+
+
 
 const getDatabase = () => {
     if (database.publicHolidays && database.publicHolidays.length) {
@@ -52,6 +58,15 @@ const getDatabase = () => {
     })
 }
 
-
-
 export default getDatabase
+
+export const add = (type, data) => {
+    return getDatabase().then(response => {
+        const object = {
+            id: v4(),
+            ...data
+        }
+        response[type].push(object)
+        return object
+    })
+}

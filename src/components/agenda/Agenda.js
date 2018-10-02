@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 
 export default class extends Component {
     getCalendarEvents (date) {
-        date = date.format('HH')
+        date = date.format('YYYYMMDDHH')
         return this.props.calendarEvents.filter(calendarEvent =>
-            moment(calendarEvent.date).format('HH') === date
+            moment(calendarEvent.date).format('YYYYMMDDHH') === date
         )
     }
 
@@ -23,9 +23,7 @@ export default class extends Component {
         const date = this.getCurrentMomentDay()
         return this.getPublicHolidays(date).map(publicHoliday =>
             <li key={publicHoliday.id}>
-                <PublicHoliday
-                    {...publicHoliday}
-                />
+                <PublicHoliday {...publicHoliday} />
             </li>
         )
     }
@@ -64,8 +62,9 @@ export default class extends Component {
         const date = this.getCurrentMomentDay()
         const link = `/month/${date.format('YYYY')}/${date.format('MM')}`
         return (
-            <div>
+            <div className="container agenda">
                 <Link to={link}>Come back to {date.format('MMMM YYYY')}</Link>
+                <h1>{date.format('DD MMMM YYYY')}</h1>
                 <ul className="agenda-header list-unstyled">
                     {this.renderPublicHolidays()}
                 </ul>

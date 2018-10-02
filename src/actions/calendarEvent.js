@@ -1,5 +1,5 @@
 import * as api from '../api'
-import { FETCH_CALENDAR_EVENTS } from '../actions-type';
+import { ADD_CALENDAR_EVENTS, FETCH_CALENDAR_EVENTS } from '../actions-type';
 import { normalize } from "normalizr";
 import * as schema from './schema'
 
@@ -18,6 +18,27 @@ export const fetchDay = date => dispatch => {
         error => {
             dispatch({
                 type: FETCH_CALENDAR_EVENTS.FAILURE,
+                message: error.message || 'Something went wrong'
+            })
+        }
+    )
+}
+
+export const add = (title, text, date) => dispatch => {
+    dispatch({
+        type: ADD_CALENDAR_EVENTS.REQUEST
+    })
+
+    return api.addCalendarEvent(title, text, date).then(
+        response => {
+            dispatch({
+                type: ADD_CALENDAR_EVENTS.SUCCESS,
+                response: normalize(response, schema.calendarEvent)
+            })
+        },
+        error => {
+            dispatch({
+                type: ADD_CALENDAR_EVENTS.FAILURE,
                 message: error.message || 'Something went wrong'
             })
         }

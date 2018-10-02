@@ -1,4 +1,4 @@
-import getDatabase from './database'
+import getDatabase, {add} from './database'
 import moment from "moment";
 
 export const fetchDay = (date) => getDatabase()
@@ -12,3 +12,7 @@ export const fetchMonth = (date) => getDatabase()
     .then(calendarEvents => calendarEvents.filter(calendarEvent =>
         moment(calendarEvent.date).format('YYYYMM') === moment(date).format('YYYYMM')
     ))
+
+export const addEvent = (title, text, date) => add('calendarEvents', {
+    title, text, date: moment(date).format('YYYYMMDD HHmmss')
+})

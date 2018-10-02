@@ -15,3 +15,6 @@ export const fetchPublicHolidaysByDay = (date) =>
 
 export const fetchPublicHolidaysByMonth = (date) =>
     delay(150).then(() => fromPublicHolidays.fetchMonth(date))
+
+export const addCalendarEvent = (title, text, date) =>
+    delay(150).then(() => fromCalendarEvents.addEvent(title, text, date))

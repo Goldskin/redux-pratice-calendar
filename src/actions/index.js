@@ -5,3 +5,4 @@ export const fetchCalendarEventsByDay = fromCalendarEvent.fetchDay
 export const fetchPublicHolidaysByDay = fromPublicHolidays.fetchDay
 export const fetchCalendarEventsByMonth = fromCalendarEvent.fetchMonth
 export const fetchPublicHolidaysByMonth = fromPublicHolidays.fetchMonth
+export const addCalendarEvent = fromCalendarEvent.add

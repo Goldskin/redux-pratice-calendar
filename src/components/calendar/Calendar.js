@@ -3,6 +3,7 @@ import moment from 'moment'
 import Cell from './CalendarCell';
 import { Link } from 'react-router-dom'
 import './calendar.css'
+import Add from '../addEvent/add'
 
 export default class extends Component {
     getCalendarEvents (date) {
@@ -64,7 +65,6 @@ export default class extends Component {
 
         const prevLink = `/month/${prev.format('YYYY')}/${prev.format('MM')}`
         const nextLink = `/month/${next.format('YYYY')}/${next.format('MM')}`
-
         return (
             <div className="calendar container">
                 <div className="row">
@@ -78,6 +78,7 @@ export default class extends Component {
                         <ul className="calendar list-unstyled">
                             {this.renderAllDay()}
                         </ul>
+                        <Add handleSubmit={this.props.addCalendarEvent}/>
                     </div>
                     <div className="col-1">
                         <Link to={nextLink}>Next month</Link>
