@@ -11,7 +11,7 @@ export default (props) => {
     )
 
     const calendarEvents = props.calendarEvents.map(calendarEvent =>
-        <CalendarEvent {...calendarEvent} key={calendarEvent.id}/>
+        <CalendarEvent {...calendarEvent} detailed key={calendarEvent.id}/>
     )
 
     return (

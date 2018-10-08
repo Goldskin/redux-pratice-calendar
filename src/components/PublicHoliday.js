@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default (props) => (
-    <div>{props.text}</div>
+    <div>{props.title}</div>
 )

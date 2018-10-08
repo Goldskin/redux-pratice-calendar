@@ -1,10 +1,10 @@
 import createList from './createList'
-import { FETCH_CALENDAR_EVENTS } from "../actions-type"
+import { CALENDAR_EVENTS } from "../actions-type"
 import * as fromByid from './byId'
 import * as fromList from './createList'
 import moment from 'moment'
 
-export default createList(FETCH_CALENDAR_EVENTS, 'calendarEvents')
+export default createList(CALENDAR_EVENTS, 'calendarEvents')
 
 export const getVisibleDay = (state, date) => {
     date = moment(date).format('YYYYMMDD')

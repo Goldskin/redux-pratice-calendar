@@ -13,6 +13,4 @@ export const fetchMonth = (date) => getDatabase()
         moment(calendarEvent.date).format('YYYYMM') === moment(date).format('YYYYMM')
     ))
 
-export const addEvent = (title, text, date) => add('calendarEvents', {
-    title, text, date: moment(date).format('YYYYMMDD HHmmss')
-})
+export const addEvent = (calendarEvent) => add('calendarEvents', calendarEvent)

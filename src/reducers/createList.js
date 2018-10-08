@@ -2,29 +2,38 @@ import { combineReducers } from "redux";
 export default (actions, type) => {
     const ids = (state = [], action) => {
         switch (action.type) {
-            case actions.SUCCESS:
+            case actions.FETCH.SUCCESS:
                 return action.response.result
+            case actions.ADD.SUCCESS:
+                return [...state, action.response.result]
             default:
                 return state
         }
     }
     const errorMessage = (state = null, action) => {
         switch (action.type) {
-            case actions.FAILURE:
+            case actions.FETCH.FAILURE:
+            case actions.ADD.FAILURE:
                 return action.message
-            case actions.REQUEST:
-            case actions.SUCCESS:
+            case actions.FETCH.REQUEST:
+            case actions.FETCH.SUCCESS:
+            case actions.ADD.REQUEST:
+            case actions.ADD.SUCCESS:
                 return null
             default:
                 return state
         }
     }
+
     const isFetching = (state = false, action) => {
         switch (action.type) {
-            case actions.REQUEST:
+            case actions.FETCH.REQUEST:
+            case actions.ADD.REQUEST:
                 return true
-            case actions.SUCCESS:
-            case actions.FAILURE:
+            case actions.FETCH.SUCCESS:
+            case actions.FETCH.FAILURE:
+            case actions.ADD.SUCCESS:
+            case actions.ADD.FAILURE:
                 return false
             default:
                 return state
